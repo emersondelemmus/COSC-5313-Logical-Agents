@@ -1,0 +1,334 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{COSC 5313: Logical Agents}
+\author{Emerson de Lemmus }
+\date{July 2020}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 1}
+\begin{enumerate}
+    \item \textit{false $\vDash$ true} is a correct statement. The implication of false entails true is a correct assumption e.g. if false, then true is a true statement.\\
+    
+    \item \textit{true $\vDash$ false} is an incorrect statement. For every model $\alpha$ = true, no model $\beta$ = false e.g. if true, then false is an incorrect statement.\\
+    
+    \item \textit{$(A \land B) \vDash (A \Leftrightarrow B)$} given truth table: 
+    
+        \begin{center}
+        \begin{displaymath}
+            \begin{array}{|c c|c|c|}
+                A & B & (A \land B) & (A \Leftrightarrow B)\\
+                \hline
+                T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & F & F\\
+                F & T & F & F\\
+                F & F & F & T\\
+            \end{array}
+        \end{displaymath}
+        \end{center}
+        
+    \textit{$(A \land B) \vDash (A \Leftrightarrow B)$} is a correct statement. For every model where $(A \land B)$ is true, $(A \Leftrightarrow B)$ is also true.\\
+    
+    \item \textit{$(A \Leftrightarrow B) \vDash (A \lor B)$} given truth table: 
+    
+        \begin{center}
+        \begin{displaymath}
+            \begin{array}{|c c|c|c|}
+                A & B & (A \Leftrightarrow B) & (A \lor B) \\
+                \hline
+                T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & F & T\\
+                F & T & F & T\\
+                F & F & {\textcolor{red}{T}} & {\textcolor{red}{F}}\\
+            \end{array}
+        \end{displaymath}
+        \end{center}
+        
+    \textit{$(A \Leftrightarrow B) \vDash (A \lor B)$} is an incorrect statement. For every model where $(A \Leftrightarrow B)$ is true, $(A \lor B)$ is not true.
+    
+    \newpage \item \textit{$(A \Leftrightarrow B) \vDash (\neg A \lor B)$} given truth table: 
+    
+        \begin{center}
+        \begin{displaymath}
+            \begin{array}{|c c|c|c|c|}
+                A & B & \neg A & (A \Leftrightarrow B) & (\neg A \lor B) \\
+                \hline
+                T & T & F & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & F & F & F\\
+                F & T & T & F & T\\
+                F & F & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+            \end{array}
+        \end{displaymath}
+        \end{center}
+        
+    \textit{$(A \Leftrightarrow B) \vDash (\neg A \lor B)$} is a correct statement. For every model where $(A \Leftrightarrow B)$ is true, $(\neg A \lor B)$ is also true.\\
+    
+    \item \textit{$(A \land B) \rightarrow C \vDash (A \rightarrow C) \lor (B \rightarrow C)$} given truth table: 
+    
+        \begin{center}
+        \begin{displaymath}
+           {\footnotesize \begin{array}{|c c c|c|c|c|c|c|}
+                A & B & C & (A \land B) & (A \land B) \rightarrow C & (A \rightarrow C) & (B \rightarrow C) & (A \rightarrow C) \lor (B \rightarrow C)\\
+                \hline
+                T & T & T & T & {\textcolor{blue}{T}} & T & T & {\textcolor{blue}{T}}\\
+                T & T & F & T & F & F & F & F\\
+                T & F & T & F & {\textcolor{blue}{T}} & T & T & {\textcolor{blue}{T}}\\
+                T & F & F & F & {\textcolor{blue}{T}} & F & T & {\textcolor{blue}{T}}\\
+                F & T & T & F & {\textcolor{blue}{T}} & T & T & {\textcolor{blue}{T}}\\
+                F & T & F & F & {\textcolor{blue}{T}} & T & F & {\textcolor{blue}{T}}\\
+                F & F & T & F & {\textcolor{blue}{T}} & T & T & {\textcolor{blue}{T}}\\
+                F & F & F & F & {\textcolor{blue}{T}} & T & T & {\textcolor{blue}{T}}\\
+            \end{array}}
+        \end{displaymath}
+        \end{center}
+        \textit{$(A \land B) \rightarrow C \vDash ( A \rightarrow C) \lor (B \rightarrow C)$} is a correct statement.\\
+        
+    \item \textit{$(C \lor (\neg A \land \neg B)) \equiv (A \rightarrow C) \land (B \rightarrow C)$} given truth table:
+        
+        \begin{center}
+            \begin{displaymath}
+                {\footnotesize \begin{array}{|c c c|c|c|c|c|c|}
+                A & B & C & \neg A & \neg B & (C \lor (\neg A \land \neg B) & (A \rightarrow C) \land (B \rightarrow C) & (C \lor (\neg A \land \neg B) \equiv (A \rightarrow C) \land (B \rightarrow C)\\
+                \hline
+                T & T & T & F & F & T & T & {\textcolor{blue}{T}}\\
+                T & T & F & F & F & F & F & {\textcolor{blue}{T}}\\
+                T & F & T & F & T & T & T & {\textcolor{blue}{T}}\\
+                T & F & F & F & T & F & F & {\textcolor{blue}{T}}\\
+                F & T & T & T & F & T & T & {\textcolor{blue}{T}}\\
+                F & T & F & T & F & F & F & {\textcolor{blue}{T}}\\
+                F & F & T & T & T & T & T & {\textcolor{blue}{T}}\\
+                F & F & F & T & T & T & T & {\textcolor{blue}{T}}\\
+                \end{array}}
+            \end{displaymath}
+            {\scriptsize Author's Note: for the sake of simplicity, I will condense the truth tables to the most essential sections.}
+        \end{center}
+        
+    \textit{$(C \lor (\neg A \land \neg B)) \equiv (A \rightarrow C) \land (B \rightarrow C)$} is a correct statement.
+        
+    \newpage\item \textit{$(A \lor B) \land (\neg C \lor \neg D \lor E) \vDash (A \lor B)$} given truth table:
+        
+        \begin{center}
+            \begin{displaymath}
+                {\footnotesize \begin{array}{|c c c c c|c|c|c|c|}
+                A & B & C & D & E & (A \lor B) & (\neg C \lor (\neg D \lor E)) & (A \lor B) \land (\neg C \lor \neg D \lor E) \\
+                \hline
+                T & T & T & T & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & T & T & T & F & T & F & F\\
+                T & T & T & F & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & T & T & F & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & T & F & T & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & T & F & T & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & T & F & F & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & T & F & F & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & F & T & T & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\        
+                T & F & T & T & F & {\textcolor{blue}{T}} & F & {\textcolor{blue}{T}}\\
+                T & F & T & F & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & F & T & F & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & F & F & T & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & F & F & T & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & F & F & F & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                T & F & F & F & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                F & T & T & T & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                F & T & T & T & F & T & F & F\\
+                F & T & T & F & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                F & T & T & F & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                F & T & F & T & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                F & T & F & T & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                F & T & F & F & T & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                F & T & F & F & F & {\textcolor{blue}{T}} & T & {\textcolor{blue}{T}}\\
+                F & F & T & T & T & F & T & F\\
+                F & F & T & T & F & F & F & F\\
+                F & F & T & F & T & F & T & F\\
+                F & F & T & F & F & F & T & F\\
+                F & F & F & T & T & F & T & F\\
+                F & F & F & T & F & F & T & F\\
+                F & F & F & F & T & F & T & F\\
+                F & F & F & F & F & F & T & F\\
+                \end{array}}
+            \end{displaymath}
+        \end{center}
+        
+    \textit{$(A \lor B) \land (\neg C \lor \neg D \lor E) \vDash (A \lor B)$} is a correct statement.
+    
+    \newpage\item \textit{$(A \lor B) \land (\neg C \lor \neg D \lor E) \vDash (A \lor B) \land (\neg D \lor E)$} given truth table:
+        
+        \begin{center}
+            \begin{displaymath}
+                {\footnotesize \begin{array}{|c c c c c|c|c|c|c|c|}
+                A & B & C & D & E & (A \lor B) & (\neg C \lor (\neg D \lor E)) & (A \lor B) \land (\neg C \lor \neg D \lor E) & (A \lor B) \land (\neg D \lor E) \\
+                \hline
+                T & T & T & T & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & T & T & T & F & T & F & F & F\\
+                T & T & T & F & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & T & T & F & F & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & T & F & T & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & T & F & T & F & T & T & {\textcolor{red}{T}} & \textcolor{red}{F}\\
+                T & T & F & F & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & T & F & F & F & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & T & T & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\        
+                T & F & T & T & F & T & F & F & F\\
+                T & F & T & F & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & T & F & F & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & F & T & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & F & T & F & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & F & F & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                T & F & F & F & F & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                F & T & T & T & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                F & T & T & T & F & T & F & F & F\\
+                F & T & T & F & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                F & T & T & F & F & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                F & T & F & T & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                F & T & F & T & F & T & T & {\textcolor{red}{T}} & \textcolor{red}{F}\\
+                F & T & F & F & T & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                F & T & F & F & F & T & T & {\textcolor{blue}{T}} & {\textcolor{blue}{T}}\\
+                F & F & T & T & T & F & T & F & F\\
+                F & F & T & T & F & F & F & F & F\\
+                F & F & T & F & T & F & T & F & F\\
+                F & F & T & F & F & F & T & F & F\\
+                F & F & F & T & T & F & T & F & F\\
+                F & F & F & T & F & F & T & F & F\\
+                F & F & F & F & T & F & T & F & F\\
+                F & F & F & F & F & F & T & F & F\\
+                \end{array}}
+            \end{displaymath}
+        \end{center}
+    \textit{$(A \lor B) \land (\neg C \lor \neg D \lor E) \vDash (A \lor B) \land (\neg D \lor E)$} is an incorrect statement.\\
+
+
+
+    \item \textit{$(A \lor B) \land \neg(A \rightarrow B)$} given truth table: 
+    
+        \begin{center}
+        \begin{displaymath}
+            \begin{array}{|c c|c|c|c|c|}
+                A & B & (A \lor B) & (A \rightarrow B) & \neg(A \rightarrow B) & (A \rightarrow B) \land \neg(A \rightarrow B)  \\
+                \hline
+                T & T & T & T & F & F\\
+                T & F & T & F & T & {\textcolor{blue}{T}}\\
+                F & T & T & T & F & F\\
+                F & F & F & T & F & {\textcolor{blue}{T}}\\
+            \end{array}
+        \end{displaymath}
+        \end{center}
+        
+     \textit{$(A \lor B) \land \neg(A \rightarrow B)$} is satisfiable. Given the definition of satisfiability in mathematical logic, a formula is satisfiable if it is possible to find a model that makes the formula true.
+\end{enumerate}
+
+\section*{Problem 2}
+\paragraph{Convert $(A \lor B) \Rightarrow (C \Rightarrow D)$ to to Conjunctive Normal Form (CNF).\\}
+    \begin{center}
+    \textit{Replace $\alpha \Rightarrow \beta$ with $\neg \alpha \lor \beta$}
+    \end{center}
+        \begin{itemize}
+        \item $(\neg(A \lor B)) \lor (C \Rightarrow D)$
+        \item $(\neg(A \lor B) \lor (\neg C \lor D)$\newline
+        \begin{center}
+            \textit{Move $\neg$ inwards using De Morgan’s rules and double-negation}\newline
+        \end{center}
+    
+        \item $(\neg A \land \neg B) \lor (\neg C \lor D)$\newline
+        \end{itemize}
+        
+\section*{Problem 3}
+\textbf{Prove that $KB \vDash C$ by contradiction given KB (knowledge base) contains:}
+\begin{itemize}
+    \item $A \lor B$
+    \item $A \Rightarrow C$
+    \item $B \Rightarrow C$
+\end{itemize}
+To show that $KB \vDash C$ we must show that $KB \vDash \neg C$ is unsatisfiable.\\ 
+
+\textbf{Step 1:} Put KB in Conjunctive Normal Form:\\
+\par Eliminate $\Rightarrow$, replacing $\alpha \Rightarrow \beta$ with $\neg \alpha \lor \beta$:
+\begin{itemize}
+    \item $A \lor B$
+    \item $A \Rightarrow C$
+    \par $\neg A \lor C$
+    \item $B \Rightarrow C$
+    \par $\neg B \lor C$\\
+    
+    \par \textbf{Step 2: $KB \land \neg C$ }
+    \item $A \lor B$
+    \item $\neg A \lor C$
+    \item $\neg B \lor C$
+    \item $\neg C$
+    \pagebreak
+    
+    \par \textbf{Step 3: Current KB}
+    \item $A \lor B$
+    \item $\neg A \lor C$
+    \item {\textcolor{blue}{$\neg B \lor C$}}
+    \item {\textcolor{red}{$\neg C$}}\newline
+    \[\frac{\textcolor{blue}{\neg B \lor C}, \textcolor{red}{\neg C}}{\textcolor{red}{\neg B}}\]\\
+    
+    \par \textbf{Step 4: Updated KB from step 3}
+    \item $A \lor B$
+    \item $\neg A \lor C$
+    \item $\neg B \lor C$
+    \item $\neg C$
+    \item \textcolor{red}{$\neg B$}\\
+    
+    \par \textbf{Step 5: Current KB}\\
+    \item \textcolor{blue}{$A \lor B$}
+    \item $\neg A \lor C$
+    \item $\neg B \lor C$
+    \item $\neg C$
+    \item \textcolor{red}{$\neg B$}
+    \[\frac{\textcolor{blue}{A \lor B}, \textcolor{red}{\neg B}}{\textcolor{red}{A}}\]\\
+    \pagebreak
+    
+    \textbf{Step 6: Updated KB from step 5}\\
+    \item $A \lor B$
+    \item $\neg A \lor C$
+    \item $\neg B \lor C$
+    \item $\neg C$
+    \item $\neg B$
+    \item \textcolor{red}{A}\\
+    
+    \par \textbf{Step 7: Current KB}\\
+    \item $A \lor B$
+    \item \textcolor{blue}{$\neg A \lor C$}
+    \item $\neg B \lor C$
+    \item $\neg C$
+    \item $\neg B$
+    \item \textcolor{red}{A}
+    \[\frac{\textcolor{blue}{\neg A \lor C}, \textcolor{red}{A}}{\textcolor{red}{C}}\]\\
+    
+    \textbf{Step 8: Updated KB from step 7}\\
+    \item $A \lor B$
+    \item $\neg A \lor C$
+    \item $\neg B \lor C$
+    \item $\neg C$
+    \item $\neg B$
+    \item A
+    \item \textcolor{red}{C}
+    \pagebreak
+    
+    \textbf{Step 9: Current KB}
+    \item $A \lor B$
+    \item $\neg A \lor C$
+    \item $\neg B \lor C$
+    \item \textcolor{blue}{$\neg C$}
+    \item $\neg B$
+    \item A
+    \item \textcolor{red}{C}
+    
+    \[\frac{\textcolor{blue}{\neg C}, \textcolor{red}{C}}\varnothing\]\\
+    \begin{center}
+        Thus, $KB \lor \neg C$ is unsatisfiable, so $KB \vDash C$
+    \end{center}
+    
+    
+\end{itemize}
+
+\end{document}
+ 
